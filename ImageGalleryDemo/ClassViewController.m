@@ -180,7 +180,6 @@
     return encodedString;
 }
 
-
 -(void)setHomeIdeasCookie:(NSString *)token andVanityUrl:(NSString *)vanityUrl
 {
 
@@ -195,16 +194,58 @@
     [webView loadRequest:request];
 }
 
+#define kBgQueue dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
+#define kLatestKivaLoansURL [NSURL URLWithString:@"http://www.realestate.com.au/home-ideas/api/results-kitchens-modern/list-1"]
+
 -(void)showImage:(id)sender{
-    MyPhoto *photo = [[MyPhoto alloc] initWithImageURL:[NSURL URLWithString:@"http://a3.twimg.com/profile_images/66601193/cactus.jpg"] name:@" laksd;lkas;dlkaslkd ;a"];
-    MyPhoto *photo2 = [[MyPhoto alloc] initWithImageURL:[NSURL URLWithString:@"https://s3.amazonaws.com/twitter_production/profile_images/425948730/DF-Star-Logo.png"] name:@"lskdjf lksjdhfk jsdfh ksjdhf sjdhf ksjdhf ksdjfh ksdjh skdjfh skdfjh "];
-    MyPhotoSource *source = [[MyPhotoSource alloc] initWithPhotos:[NSArray arrayWithObjects:photo, photo2, photo, photo2, photo, photo2, photo, photo2, nil]];
+    dispatch_async(kBgQueue, ^{
+        NSData* data = [NSData dataWithContentsOfURL:
+                        kLatestKivaLoansURL];
+        [self performSelectorOnMainThread:@selector(fetchedData:)
+                               withObject:data waitUntilDone:YES];
+    });
+}
+
+- (void)fetchedData:(NSData *)responseData {
+    //parse out the json data
+    NSError* error;
+    NSDictionary* json = [NSJSONSerialization
+                          JSONObjectWithData:responseData //1
+                          
+                          options:kNilOptions
+                          error:&error];
     
+    [json enumerateKeysAndObjectsUsingBlock: ^(id key, id obj, BOOL *stop){
+        NSString *keyValue = key;
+        NSLog(@"======================%@", keyValue);
+     }];
+    
+    NSArray* images = [json objectForKey:@"images"]; //2
+    
+    NSMutableArray *photos = [[NSMutableArray alloc] initWithCapacity:[images count]];
+    for (NSDictionary *image in images) {
+        NSString *imageUrl = [image objectForKey:@"imageUrl"];
+        MyPhoto *myPhoto = [[MyPhoto alloc] initWithImageURL:[NSURL URLWithString:imageUrl]];
+        [photos addObject:myPhoto];
+        NSLog(@"====%@", imageUrl);
+    }
+    
+    MyPhotoSource *source = [[MyPhotoSource alloc] initWithPhotos:photos];
     EGOPhotoViewController *photoController = [[EGOPhotoViewController alloc] initWithPhotoSource:source];
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:photoController];
-    
     navController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     navController.modalPresentationStyle = UIModalPresentationFullScreen;
     [self presentModalViewController:navController animated:YES];
+
+    //    MyPhoto *photo = [[MyPhoto alloc] initWithImageURL:[NSURL URLWithString:@"http://a3.twimg.com/profile_images/66601193/cactus.jpg"] name:@" laksd;lkas;dlkaslkd ;a"];
+//    MyPhoto *photo2 = [[MyPhoto alloc] initWithImageURL:[NSURL URLWithString:@"https://s3.amazonaws.com/twitter_production/profile_images/425948730/DF-Star-Logo.png"] name:@"lskdjf lksjdhfk jsdfh ksjdhf sjdhf ksjdhf ksdjfh ksdjh skdjfh skdfjh "];
+//    MyPhotoSource *source = [[MyPhotoSource alloc] initWithPhotos:[NSArray arrayWithObjects:photo, photo2, photo, photo2, photo, photo2, photo, photo2, nil]];
+//    
+//    EGOPhotoViewController *photoController = [[EGOPhotoViewController alloc] initWithPhotoSource:source];
+//    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:photoController];
+//    
+//    navController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+//    navController.modalPresentationStyle = UIModalPresentationFullScreen;
+//    [self presentModalViewController:navController animated:YES];
 }
 @end
