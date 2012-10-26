@@ -11,11 +11,15 @@
 #import <FacebookSDK/FacebookSDK.h>
 #import "NSData+Base64.h"
 #import "NSMutableURLRequest+XSURLRequest.h"
+#import "EGOPhotoGlobal.h"
+#import "MyPhotoSource.h"
+#import "MyPhoto.h"
 
 @interface ClassViewController ()
 {
     HomeView *homeView;
     UIButton *loginButton;
+    UIButton *showImageButton;
     UIScrollView *scrollView;
     UIWebView *webView;
     NSString *_url;
@@ -31,15 +35,23 @@
     homeView = [[HomeView alloc]initWithFrame:[UIScreen mainScreen].applicationFrame];
     
     loginButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    loginButton.frame = CGRectMake(0, 0, 100, 50);
+    loginButton.frame = CGRectMake(0, 0, 100, 30);
     [loginButton setTitle:@"login" forState:UIControlStateNormal];
     [loginButton addTarget:self action:@selector(buttonClicked:) forControlEvents:UIControlEventTouchUpInside];
     [homeView addSubview: loginButton];
     
+    showImageButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    showImageButton.frame = CGRectMake(100, 0, 100, 30);
+    [showImageButton setTitle:@"show image" forState:UIControlStateNormal];
+    [showImageButton addTarget:self action:@selector(showImage:) forControlEvents:UIControlEventTouchUpInside];
+    [homeView addSubview: showImageButton];
+
+    
+    
     NSLog(@"-------%f", homeView.frame.size.width);
     NSLog(@"-------%f", homeView.frame.size.height);
-    scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 50, homeView.frame.size.width, homeView.frame.size.height)];
-    webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 50, homeView.frame.size.width, 2000.00)];
+    scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 30, homeView.frame.size.width, homeView.frame.size.height)];
+    webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, homeView.frame.size.width, 2000.00)];
     
     webView.scalesPageToFit = YES;
     webView.autoresizesSubviews = YES;
@@ -183,5 +195,16 @@
     [webView loadRequest:request];
 }
 
-
+-(void)showImage:(id)sender{
+    MyPhoto *photo = [[MyPhoto alloc] initWithImageURL:[NSURL URLWithString:@"http://a3.twimg.com/profile_images/66601193/cactus.jpg"] name:@" laksd;lkas;dlkaslkd ;a"];
+    MyPhoto *photo2 = [[MyPhoto alloc] initWithImageURL:[NSURL URLWithString:@"https://s3.amazonaws.com/twitter_production/profile_images/425948730/DF-Star-Logo.png"] name:@"lskdjf lksjdhfk jsdfh ksjdhf sjdhf ksjdhf ksdjfh ksdjh skdjfh skdfjh "];
+    MyPhotoSource *source = [[MyPhotoSource alloc] initWithPhotos:[NSArray arrayWithObjects:photo, photo2, photo, photo2, photo, photo2, photo, photo2, nil]];
+    
+    EGOPhotoViewController *photoController = [[EGOPhotoViewController alloc] initWithPhotoSource:source];
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:photoController];
+    
+    navController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    navController.modalPresentationStyle = UIModalPresentationFullScreen;
+    [self presentModalViewController:navController animated:YES];
+}
 @end
