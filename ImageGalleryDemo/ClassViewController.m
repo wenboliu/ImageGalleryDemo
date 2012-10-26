@@ -44,7 +44,7 @@
     webView.scalesPageToFit = YES;
     webView.autoresizesSubviews = YES;
     
-    _url = @"http://10.29.2.71:8080";
+    _url = @"http://10.18.10.5:8080";
     [self loadUrl: _url];
     NSHTTPCookie *cookie;
     NSHTTPCookieStorage *cookieJar = [NSHTTPCookieStorage sharedHTTPCookieStorage];
