@@ -10,6 +10,7 @@
 #import "HomeView.h"
 #import <FacebookSDK/FacebookSDK.h>
 #import "NSData+Base64.h"
+#import "NSMutableURLRequest+XSURLRequest.h"
 
 @interface ClassViewController ()
 {
@@ -17,6 +18,7 @@
     UIButton *loginButton;
     UIScrollView *scrollView;
     UIWebView *webView;
+    NSString *_url;
 }
 @property (nonatomic, strong) FBRequestConnection *requestConnection;
 @end
@@ -42,8 +44,13 @@
     webView.scalesPageToFit = YES;
     webView.autoresizesSubviews = YES;
     
-    [self loadUrl:@"http://10.18.10.5:8080"];
-    
+    _url = @"http://10.29.2.71:8080";
+    [self loadUrl: _url];
+    NSHTTPCookie *cookie;
+    NSHTTPCookieStorage *cookieJar = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+    for (cookie in [cookieJar cookies]) {
+        NSLog(@"------%@", cookie);
+    }
     
     [scrollView addSubview:webView];
     
@@ -53,9 +60,8 @@
 
 - (void) loadUrl: (NSString*) urlStr
 {
+    NSLog(@"###########loading url :%@", urlStr);
     NSURL *url = [NSURL URLWithString:urlStr];
-    //    NSMutableURLRequest *requestObj = [NSMutableURLRequest requestWithURL:url];
-    
     NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
     [webView loadRequest:requestObj];
 }
@@ -102,23 +108,10 @@
     NSLog(@"==sendRequests");
     [FBSettings setLoggingBehavior:[NSSet setWithObjects:
                                     FBLoggingBehaviorFBRequests, nil]];
-    //    FBRequestConnection *newConnection = [[FBRequestConnection alloc] init];
-    //
-    //
     FBRequestHandler handler =
     ^(FBRequestConnection *connection, id result, NSError *error) {
         [self requestCompleted:connection andResult:result andError:error];
     };
-    //
-    //    FBRequest *request = [[FBRequest alloc] initWithSession:FBSession.activeSession
-    //                                                      graphPath:@"me/id,name,username,link"];
-    //
-    //    [newConnection addRequest:request completionHandler:handler];
-    //
-    //    [self.requestConnection cancel];
-    //
-    //    self.requestConnection = newConnection;
-    //    [newConnection start];
     [FBRequestConnection
      startForMeWithCompletionHandler:handler];
     
@@ -154,15 +147,15 @@
     NSLog(@"link :%@", [user objectForKey:@"email"]);
     NSLog(@"test :%@", userInfo);
     NSLog(@"============");
-//    [self setHomeIdeasCookie:userInfo andVanityUrl:user.username];
-    //    [self loadUrl:_url];
-    NSLog(@"------------");
-    
-    NSHTTPCookie *cookie;
-    NSHTTPCookieStorage *cookieJar = [NSHTTPCookieStorage sharedHTTPCookieStorage];
-    for (cookie in [cookieJar cookies]) {
-        NSLog(@"------%@", cookie);
-    }
+    [self setHomeIdeasCookie:userInfo andVanityUrl:user.username];
+    [self loadUrl:_url];
+//    NSLog(@"------------");
+//    
+//    NSHTTPCookie *cookie;
+//    NSHTTPCookieStorage *cookieJar = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+//    for (cookie in [cookieJar cookies]) {
+//        NSLog(@"------%@", cookie);
+//    }
 }
 
 -(NSString *)base64Encode:(NSString *)str
@@ -174,5 +167,21 @@
 #endif
     return encodedString;
 }
+
+
+-(void)setHomeIdeasCookie:(NSString *)token andVanityUrl:(NSString *)vanityUrl
+{
+
+    NSMutableURLRequest * request=[[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:_url]];
+
+    XSCookie * cookie1=[[XSCookie alloc] initForDomain:_url withName:@"s_tok" value:token];
+    XSCookie * cookie2=[[XSCookie alloc] initForDomain:_url withName:@"s_vani" value:vanityUrl];
+    
+    NSArray * myCookieBag=[NSArray arrayWithObjects:cookie1,cookie2,nil];
+    
+    [request setAllCookies:myCookieBag];
+    [webView loadRequest:request];
+}
+
 
 @end

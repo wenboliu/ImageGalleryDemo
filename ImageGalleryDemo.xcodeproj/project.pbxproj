@@ -32,6 +32,8 @@
 		49098F4B163A251A00C6E793 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49098F4A163A251A00C6E793 /* QuartzCore.framework */; };
 		4932BD67163A3EF600515F22 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 4932BD64163A3EF600515F22 /* NSData+Base64.m */; };
 		4932BD68163A3EF600515F22 /* NSString+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 4932BD66163A3EF600515F22 /* NSString+Base64.m */; };
+		4932BD6F163A405200515F22 /* NSMutableURLRequest+XSURLRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4932BD6C163A405200515F22 /* NSMutableURLRequest+XSURLRequest.m */; };
+		4932BD70163A405200515F22 /* XSCookie.m in Sources */ = {isa = PBXBuildFile; fileRef = 4932BD6E163A405200515F22 /* XSCookie.m */; };
 		49431AE7163A29500053BAF0 /* HomeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 49431AE6163A29500053BAF0 /* HomeView.m */; };
 /* End PBXBuildFile section */
 
@@ -79,6 +81,10 @@
 		4932BD64163A3EF600515F22 /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64.m"; sourceTree = "<group>"; };
 		4932BD65163A3EF600515F22 /* NSString+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Base64.h"; sourceTree = "<group>"; };
 		4932BD66163A3EF600515F22 /* NSString+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Base64.m"; sourceTree = "<group>"; };
+		4932BD6B163A405200515F22 /* NSMutableURLRequest+XSURLRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableURLRequest+XSURLRequest.h"; sourceTree = "<group>"; };
+		4932BD6C163A405200515F22 /* NSMutableURLRequest+XSURLRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableURLRequest+XSURLRequest.m"; sourceTree = "<group>"; };
+		4932BD6D163A405200515F22 /* XSCookie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XSCookie.h; sourceTree = "<group>"; };
+		4932BD6E163A405200515F22 /* XSCookie.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XSCookie.m; sourceTree = "<group>"; };
 		49431AE5163A29500053BAF0 /* HomeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeView.h; sourceTree = "<group>"; };
 		49431AE6163A29500053BAF0 /* HomeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeView.m; sourceTree = "<group>"; };
 		49431AE8163A29C90053BAF0 /* ClassViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ClassViewController.xib; path = ImageGalleryDemo/ClassViewController.xib; sourceTree = SOURCE_ROOT; };
@@ -152,6 +158,7 @@
 		49098F06163A247200C6E793 /* ImageGalleryDemo */ = {
 			isa = PBXGroup;
 			children = (
+				4932BD6A163A405200515F22 /* XSCookie */,
 				4932BD62163A3EF600515F22 /* Base64 */,
 				49431AE5163A29500053BAF0 /* HomeView.h */,
 				49431AE6163A29500053BAF0 /* HomeView.m */,
@@ -218,6 +225,17 @@
 				4932BD66163A3EF600515F22 /* NSString+Base64.m */,
 			);
 			path = Base64;
+			sourceTree = "<group>";
+		};
+		4932BD6A163A405200515F22 /* XSCookie */ = {
+			isa = PBXGroup;
+			children = (
+				4932BD6B163A405200515F22 /* NSMutableURLRequest+XSURLRequest.h */,
+				4932BD6C163A405200515F22 /* NSMutableURLRequest+XSURLRequest.m */,
+				4932BD6D163A405200515F22 /* XSCookie.h */,
+				4932BD6E163A405200515F22 /* XSCookie.m */,
+			);
+			path = XSCookie;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -339,6 +357,8 @@
 				49431AE7163A29500053BAF0 /* HomeView.m in Sources */,
 				4932BD67163A3EF600515F22 /* NSData+Base64.m in Sources */,
 				4932BD68163A3EF600515F22 /* NSString+Base64.m in Sources */,
+				4932BD6F163A405200515F22 /* NSMutableURLRequest+XSURLRequest.m in Sources */,
+				4932BD70163A405200515F22 /* XSCookie.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
