@@ -9,6 +9,7 @@
 #import "ClassViewController.h"
 #import "HomeView.h"
 #import <FacebookSDK/FacebookSDK.h>
+#import "NSData+Base64.h"
 
 @interface ClassViewController ()
 {
@@ -132,20 +133,20 @@
     self.requestConnection = nil;
     NSMutableString *userInfo = [[NSMutableString alloc] initWithCapacity:7];
     //    [userInfo appendString:[self base64Encode:user.id]];
-//    [userInfo appendString:[self base64Encode:@"1"]];
+    [userInfo appendString:[self base64Encode:@"1"]];
     NSString *separator = @"|";
     [userInfo appendString:separator];
-//    [userInfo appendString:[self base64Encode:@"avatarUrl"]];
+    [userInfo appendString:[self base64Encode:@"avatarUrl"]];
     [userInfo appendString:separator];
-//    [userInfo appendString:[self base64Encode:user.username]];
+    [userInfo appendString:[self base64Encode:user.username]];
     [userInfo appendString:separator];
-//    [userInfo appendString:[self base64Encode:user.name]];
+    [userInfo appendString:[self base64Encode:user.name]];
     [userInfo appendString:separator];
-//    [userInfo appendString:[self base64Encode:[user objectForKey:@"email"]]];
+    [userInfo appendString:[self base64Encode:[user objectForKey:@"email"]]];
     [userInfo appendString:separator];
-//    [userInfo appendString:[self base64Encode:@"token"]];
+    [userInfo appendString:[self base64Encode:@"token"]];
     [userInfo appendString:separator];
-//    [userInfo appendString:[self base64Encode:@"loggedInIp"]];
+    [userInfo appendString:[self base64Encode:@"loggedInIp"]];
     NSLog(@"============");
     NSLog(@"id :%@", user.id);
     NSLog(@"name :%@", user.name);
@@ -162,6 +163,16 @@
     for (cookie in [cookieJar cookies]) {
         NSLog(@"------%@", cookie);
     }
+}
+
+-(NSString *)base64Encode:(NSString *)str
+{
+    NSData *inputData = [str dataUsingEncoding:NSUTF8StringEncoding];
+    NSString *encodedString = [inputData base64EncodedString];
+#if !__has_feature(objc_arc)
+    [encodedString autorelease];
+#endif
+    return encodedString;
 }
 
 @end
