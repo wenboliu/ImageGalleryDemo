@@ -58,6 +58,8 @@
 		4932BE02163A570C00515F22 /* EGOPhotoScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4932BDF1163A570C00515F22 /* EGOPhotoScrollView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		4932BE06163A58F800515F22 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4932BE05163A58F800515F22 /* MessageUI.framework */; };
 		49431AE7163A29500053BAF0 /* HomeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 49431AE6163A29500053BAF0 /* HomeView.m */; };
+		49F97E19163A8F4100D55E58 /* WebViewJavascriptBridge.js.txt in Resources */ = {isa = PBXBuildFile; fileRef = 49F97E17163A8F4100D55E58 /* WebViewJavascriptBridge.js.txt */; };
+		49F97E1A163A8F4100D55E58 /* WebViewJavascriptBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 49F97E18163A8F4100D55E58 /* WebViewJavascriptBridge.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -147,6 +149,9 @@
 		49431AE5163A29500053BAF0 /* HomeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeView.h; sourceTree = "<group>"; };
 		49431AE6163A29500053BAF0 /* HomeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeView.m; sourceTree = "<group>"; };
 		49431AE8163A29C90053BAF0 /* ClassViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ClassViewController.xib; path = ImageGalleryDemo/ClassViewController.xib; sourceTree = SOURCE_ROOT; };
+		49F97E16163A8F4100D55E58 /* WebViewJavascriptBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewJavascriptBridge.h; sourceTree = "<group>"; };
+		49F97E17163A8F4100D55E58 /* WebViewJavascriptBridge.js.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = WebViewJavascriptBridge.js.txt; sourceTree = "<group>"; };
+		49F97E18163A8F4100D55E58 /* WebViewJavascriptBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewJavascriptBridge.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -220,6 +225,7 @@
 		49098F06163A247200C6E793 /* ImageGalleryDemo */ = {
 			isa = PBXGroup;
 			children = (
+				49F97E15163A8F4100D55E58 /* WebViewJavascriptBridge */,
 				4932BDB7163A49F300515F22 /* Model */,
 				4932BD6A163A405200515F22 /* XSCookie */,
 				4932BD62163A3EF600515F22 /* Base64 */,
@@ -454,6 +460,16 @@
 			path = EGOPhotoScrollView;
 			sourceTree = "<group>";
 		};
+		49F97E15163A8F4100D55E58 /* WebViewJavascriptBridge */ = {
+			isa = PBXGroup;
+			children = (
+				49F97E16163A8F4100D55E58 /* WebViewJavascriptBridge.h */,
+				49F97E17163A8F4100D55E58 /* WebViewJavascriptBridge.js.txt */,
+				49F97E18163A8F4100D55E58 /* WebViewJavascriptBridge.m */,
+			);
+			path = WebViewJavascriptBridge;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -544,6 +560,7 @@
 				4932BDFD163A570C00515F22 /* egopv_photo_placeholder@2x.png in Resources */,
 				4932BDFE163A570C00515F22 /* egopv_right.png in Resources */,
 				4932BDFF163A570C00515F22 /* egopv_right@2x.png in Resources */,
+				49F97E19163A8F4100D55E58 /* WebViewJavascriptBridge.js.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -597,6 +614,7 @@
 				4932BE00163A570C00515F22 /* EGOPhotoCaptionView.m in Sources */,
 				4932BE01163A570C00515F22 /* EGOPhotoImageView.m in Sources */,
 				4932BE02163A570C00515F22 /* EGOPhotoScrollView.m in Sources */,
+				49F97E1A163A8F4100D55E58 /* WebViewJavascriptBridge.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

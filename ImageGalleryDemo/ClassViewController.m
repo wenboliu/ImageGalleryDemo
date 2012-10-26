@@ -14,6 +14,7 @@
 #import "EGOPhotoGlobal.h"
 #import "MyPhotoSource.h"
 #import "MyPhoto.h"
+#import "WebViewJavascriptBridge.h"
 
 @interface ClassViewController ()
 {
@@ -23,6 +24,7 @@
     UIScrollView *scrollView;
     UIWebView *webView;
     NSString *_url;
+    WebViewJavascriptBridge *bridge;
 }
 @property (nonatomic, strong) FBRequestConnection *requestConnection;
 @end
@@ -56,7 +58,8 @@
     webView.scalesPageToFit = YES;
     webView.autoresizesSubviews = YES;
     
-    _url = @"http://10.18.10.5:8080";
+    
+    _url = @"http://10.18.10.2:8080";
     [self loadUrl: _url];
     NSHTTPCookie *cookie;
     NSHTTPCookieStorage *cookieJar = [NSHTTPCookieStorage sharedHTTPCookieStorage];
@@ -68,6 +71,18 @@
     
     [homeView addSubview:scrollView];
     self.view = homeView;
+    
+    [WebViewJavascriptBridge enableLogging];
+    
+    bridge = [WebViewJavascriptBridge bridgeForWebView:webView handler:^(id data, WVJBResponse *response) {
+        NSLog(@"=====%@", data);
+        NSDictionary *actualData = data;
+        NSString *pageUrl = [actualData objectForKey:@"pageUrl"];
+        NSLog(@"==pageUrl:%@", pageUrl);
+        NSString *imageUrl = [actualData objectForKey:@"imageUrl"];
+        NSLog(@"==imageUrl:%@", imageUrl);
+        [self showGallery:pageUrl andImageUrl:imageUrl];
+    }];
 }
 
 - (void) loadUrl: (NSString*) urlStr
@@ -201,6 +216,16 @@
     dispatch_async(kBgQueue, ^{
         NSData* data = [NSData dataWithContentsOfURL:
                         kLatestKivaLoansURL];
+        [self performSelectorOnMainThread:@selector(fetchedData:)
+                               withObject:data waitUntilDone:YES];
+    });
+}
+
+-(void) showGallery:(NSString*) pageUrl andImageUrl:(NSString*) imageUrl
+{
+    dispatch_async(kBgQueue, ^{
+        NSData* data = [NSData dataWithContentsOfURL:
+                        [NSURL URLWithString:pageUrl]];
         [self performSelectorOnMainThread:@selector(fetchedData:)
                                withObject:data waitUntilDone:YES];
     });
