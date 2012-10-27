@@ -21,9 +21,9 @@
     HomeView *homeView;
     UIButton *loginButton;
     UIButton *showImageButton;
-    UIScrollView *scrollView;
     UIWebView *webView;
     NSString *_url;
+    NSString *_previousUrl;
     WebViewJavascriptBridge *bridge;
 }
 @property (nonatomic, strong) FBRequestConnection *requestConnection;
@@ -50,16 +50,13 @@
 
     
     
-    NSLog(@"-------%f", homeView.frame.size.width);
-    NSLog(@"-------%f", homeView.frame.size.height);
-    scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 30, homeView.frame.size.width, homeView.frame.size.height)];
-    webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, homeView.frame.size.width, 2000.00)];
-    
+    webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 30,homeView.frame.size.height ,homeView.frame.size.width)];
     webView.scalesPageToFit = YES;
     webView.autoresizesSubviews = YES;
+   [webView stringByEvaluatingJavaScriptFromString:@"var e = document.createEvent('Events'); e.initEvent('orientationchange', true, false); document.dispatchEvent(e);"];
     
-    
-    _url = @"http://10.18.10.2:8080";
+    _url = @"http://www.realestate.com.au/home-ideas/";
+    //    _url = @"http://10.18.10.2:8080";
     [self loadUrl: _url];
     NSHTTPCookie *cookie;
     NSHTTPCookieStorage *cookieJar = [NSHTTPCookieStorage sharedHTTPCookieStorage];
@@ -67,9 +64,8 @@
         NSLog(@"------%@", cookie);
     }
     
-    [scrollView addSubview:webView];
-    
-    [homeView addSubview:scrollView];
+
+    [homeView addSubview:webView];
     self.view = homeView;
     
     [WebViewJavascriptBridge enableLogging];
@@ -83,6 +79,7 @@
         NSLog(@"==imageUrl:%@", imageUrl);
         [self showGallery:pageUrl andImageUrl:imageUrl];
     }];
+    webView.delegate = self;
 }
 
 - (void) loadUrl: (NSString*) urlStr
@@ -261,16 +258,29 @@
     navController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     navController.modalPresentationStyle = UIModalPresentationFullScreen;
     [self presentModalViewController:navController animated:YES];
+}
 
-    //    MyPhoto *photo = [[MyPhoto alloc] initWithImageURL:[NSURL URLWithString:@"http://a3.twimg.com/profile_images/66601193/cactus.jpg"] name:@" laksd;lkas;dlkaslkd ;a"];
-//    MyPhoto *photo2 = [[MyPhoto alloc] initWithImageURL:[NSURL URLWithString:@"https://s3.amazonaws.com/twitter_production/profile_images/425948730/DF-Star-Logo.png"] name:@"lskdjf lksjdhfk jsdfh ksjdhf sjdhf ksjdhf ksdjfh ksdjh skdjfh skdfjh "];
-//    MyPhotoSource *source = [[MyPhotoSource alloc] initWithPhotos:[NSArray arrayWithObjects:photo, photo2, photo, photo2, photo, photo2, photo, photo2, nil]];
-//    
-//    EGOPhotoViewController *photoController = [[EGOPhotoViewController alloc] initWithPhotoSource:source];
-//    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:photoController];
-//    
-//    navController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-//    navController.modalPresentationStyle = UIModalPresentationFullScreen;
-//    [self presentModalViewController:navController animated:YES];
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
+{
+    NSString *currentUrl = request.URL.relativePath;
+    if (!currentUrl) {
+        return NO;
+    }
+    NSLog(@"===url:%@", currentUrl);
+    NSRange findGallery = [currentUrl rangeOfString:@"gallery-"];
+    NSRange findResult = [currentUrl rangeOfString:@"results-"];
+    if (findGallery.location != NSNotFound) {
+        NSLog(@"===NO:%@", _previousUrl);
+        NSMutableString *apiUrl = [NSMutableString stringWithString:@"http://www.realestate.com.au/"];
+        [apiUrl appendString:[_previousUrl stringByReplacingOccurrencesOfString:@"home-ideas" withString:@"home-ideas/api"]];
+        NSLog(@"===apiUrl:%@", apiUrl);
+        [self showGallery:apiUrl andImageUrl:currentUrl];
+        return NO;
+    } else if (findResult.location != NSNotFound){
+        NSLog(@"===find url:%@", currentUrl);
+        _previousUrl = currentUrl;
+    }
+    NSLog(@"===YES");
+    return YES;
 }
 @end

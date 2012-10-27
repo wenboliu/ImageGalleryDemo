@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @class HomeView;
-@interface ClassViewController : UIViewController
+@interface ClassViewController : UIViewController<UIWebViewDelegate>
 
 @end

@@ -8,11 +8,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "ImageGalleryDemo/ClassViewController.m"
-         timestampString = "372940681.224198"
+         timestampString = "373053822.177467"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "208"
-         endingLineNumber = "208"
+         startingLineNumber = "203"
+         endingLineNumber = "203"
          landmarkName = "-setHomeIdeasCookie:andVanityUrl:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -21,11 +21,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "ImageGalleryDemo/ClassViewController.m"
-         timestampString = "372940681.224198"
+         timestampString = "373053822.177467"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "209"
-         endingLineNumber = "209"
+         startingLineNumber = "204"
+         endingLineNumber = "204"
          landmarkName = "-setHomeIdeasCookie:andVanityUrl:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -34,11 +34,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "ImageGalleryDemo/ClassViewController.m"
-         timestampString = "372940681.224198"
+         timestampString = "373053822.177467"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "250"
-         endingLineNumber = "250"
+         startingLineNumber = "245"
+         endingLineNumber = "245"
          landmarkName = "-fetchedData:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -47,11 +47,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "ImageGalleryDemo/ClassViewController.m"
-         timestampString = "372940681.224198"
+         timestampString = "373053822.177467"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "226"
-         endingLineNumber = "226"
+         startingLineNumber = "221"
+         endingLineNumber = "221"
          landmarkName = "-showGallery:andImageUrl:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -60,12 +60,38 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "ImageGalleryDemo/ClassViewController.m"
-         timestampString = "372940681.224198"
+         timestampString = "373053822.177467"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "219"
-         endingLineNumber = "219"
+         startingLineNumber = "214"
+         endingLineNumber = "214"
          landmarkName = "-showImage:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "ImageGalleryDemo/ClassViewController.m"
+         timestampString = "373054813.623617"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "224"
+         endingLineNumber = "224"
+         landmarkName = "-showGallery:andImageUrl:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "ImageGalleryDemo/ClassViewController.m"
+         timestampString = "373054870.264895"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "233"
+         endingLineNumber = "233"
+         landmarkName = "-fetchedData:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>
