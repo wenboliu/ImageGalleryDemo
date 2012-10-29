@@ -50,7 +50,7 @@
 
     
     
-    webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 30,homeView.frame.size.height ,homeView.frame.size.width)];
+    webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0,homeView.frame.size.height ,homeView.frame.size.width)];
     webView.scalesPageToFit = YES;
     webView.autoresizesSubviews = YES;
    [webView stringByEvaluatingJavaScriptFromString:@"var e = document.createEvent('Events'); e.initEvent('orientationchange', true, false); document.dispatchEvent(e);"];

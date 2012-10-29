@@ -14,6 +14,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [TestFlight takeOff:@"96ba5abe328875f67b9bf4a887716889_MTQ4NTc3MjAxMi0xMC0yOCAwODowNzozMy41NDQ0NTQ"];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.viewController = [[ClassViewController alloc] initWithNibName:nil bundle:nil];
