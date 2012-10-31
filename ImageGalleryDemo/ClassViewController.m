@@ -163,7 +163,8 @@
     [userInfo appendString:[self base64Encode:@"-9999"]];
     NSString *separator = @"|";
     [userInfo appendString:separator];
-    [userInfo appendString:[self base64Encode:@"avatarUrl"]];
+//    [userInfo appendString:[self base64Encode:@"avatarUrl"]];
+    [userInfo appendFormat:[self base64Encode:[@"http://graph.facebook.com/user/picture" stringByReplacingOccurrencesOfString:@"user" withString:user.id]]];
     [userInfo appendString:separator];
     [userInfo appendString:[self base64Encode:user.username]];
     [userInfo appendString:separator];
