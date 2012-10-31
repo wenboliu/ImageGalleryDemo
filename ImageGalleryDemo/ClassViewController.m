@@ -55,8 +55,8 @@
     webView.autoresizesSubviews = YES;
    [webView stringByEvaluatingJavaScriptFromString:@"var e = document.createEvent('Events'); e.initEvent('orientationchange', true, false); document.dispatchEvent(e);"];
     
-    _url = @"http://www.realestate.com.au/home-ideas/";
-    //    _url = @"http://10.18.10.2:8080";
+//    _url = @"http://www.realestate.com.au/home-ideas/";
+    _url = @"http://10.18.10.2:8080";
     [self loadUrl: _url];
     NSHTTPCookie *cookie;
     NSHTTPCookieStorage *cookieJar = [NSHTTPCookieStorage sharedHTTPCookieStorage];
@@ -72,12 +72,13 @@
     
     bridge = [WebViewJavascriptBridge bridgeForWebView:webView handler:^(id data, WVJBResponse *response) {
         NSLog(@"=====%@", data);
-        NSDictionary *actualData = data;
-        NSString *pageUrl = [actualData objectForKey:@"pageUrl"];
-        NSLog(@"==pageUrl:%@", pageUrl);
-        NSString *imageUrl = [actualData objectForKey:@"imageUrl"];
-        NSLog(@"==imageUrl:%@", imageUrl);
-        [self showGallery:pageUrl andImageUrl:imageUrl];
+//        NSDictionary *actualData = data;
+//        NSString *pageUrl = [actualData objectForKey:@"pageUrl"];
+//        NSLog(@"==pageUrl:%@", pageUrl);
+//        NSString *imageUrl = [actualData objectForKey:@"imageUrl"];
+//        NSLog(@"==imageUrl:%@", imageUrl);
+//        [self showGallery:pageUrl andImageUrl:imageUrl];
+        [self buttonClicked:nil];
     }];
     webView.delegate = self;
 }
@@ -85,9 +86,18 @@
 - (void) loadUrl: (NSString*) urlStr
 {
     NSLog(@"###########loading url :%@", urlStr);
-    NSURL *url = [NSURL URLWithString:urlStr];
-    NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
-    [webView loadRequest:requestObj];
+//    NSURL *url = [NSURL URLWithString:urlStr];
+//    NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
+//    [webView loadRequest:requestObj];
+    
+    NSMutableURLRequest * request=[[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:urlStr]];
+    
+    XSCookie * cookie1=[[XSCookie alloc] initForDomain:_url withName:@"s_ssss" value:@"ssssss"];
+    
+    NSArray * myCookieBag=[NSArray arrayWithObjects:cookie1, nil];
+    
+    [request setAllCookies:myCookieBag];
+    [webView loadRequest:request];
 }
 
 - (void)didReceiveMemoryWarning
@@ -150,7 +160,7 @@
     self.requestConnection = nil;
     NSMutableString *userInfo = [[NSMutableString alloc] initWithCapacity:7];
     //    [userInfo appendString:[self base64Encode:user.id]];
-    [userInfo appendString:[self base64Encode:@"1"]];
+    [userInfo appendString:[self base64Encode:@"-9999"]];
     NSString *separator = @"|";
     [userInfo appendString:separator];
     [userInfo appendString:[self base64Encode:@"avatarUrl"]];
@@ -161,7 +171,8 @@
     [userInfo appendString:separator];
     [userInfo appendString:[self base64Encode:[user objectForKey:@"email"]]];
     [userInfo appendString:separator];
-    [userInfo appendString:[self base64Encode:@"token"]];
+    [userInfo appendString:[self base64Encode:user.id]];
+//    [userInfo appendString:[self base64Encode:@"token"]];
     [userInfo appendString:separator];
     [userInfo appendString:[self base64Encode:@"loggedInIp"]];
     NSLog(@"============");
@@ -172,7 +183,7 @@
     NSLog(@"test :%@", userInfo);
     NSLog(@"============");
     [self setHomeIdeasCookie:userInfo andVanityUrl:user.username];
-    [self loadUrl:_url];
+//    [self loadUrl:_url];
 //    NSLog(@"------------");
 //    
 //    NSHTTPCookie *cookie;
@@ -200,7 +211,7 @@
     XSCookie * cookie1=[[XSCookie alloc] initForDomain:_url withName:@"s_tok" value:token];
     XSCookie * cookie2=[[XSCookie alloc] initForDomain:_url withName:@"s_vani" value:vanityUrl];
     
-    NSArray * myCookieBag=[NSArray arrayWithObjects:cookie1,cookie2,nil];
+    NSArray * myCookieBag=[NSArray arrayWithObjects:cookie1, cookie2, nil];
     
     [request setAllCookies:myCookieBag];
     [webView loadRequest:request];
@@ -262,6 +273,7 @@
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 {
+    
     NSString *currentUrl = request.URL.relativePath;
     if (!currentUrl) {
         return NO;
@@ -269,6 +281,7 @@
     NSLog(@"===url:%@", currentUrl);
     NSRange findGallery = [currentUrl rangeOfString:@"gallery-"];
     NSRange findResult = [currentUrl rangeOfString:@"results-"];
+    NSRange facebooklogin = [currentUrl rangeOfString:@"facebook-login"];
     if (findGallery.location != NSNotFound) {
         NSLog(@"===NO:%@", _previousUrl);
         NSMutableString *apiUrl = [NSMutableString stringWithString:@"http://www.realestate.com.au/"];
@@ -279,6 +292,10 @@
     } else if (findResult.location != NSNotFound){
         NSLog(@"===find url:%@", currentUrl);
         _previousUrl = currentUrl;
+    } else if (facebooklogin.location != NSNotFound){
+        NSLog(@"===facebook login");
+        [self buttonClicked:nil];
+        return NO;
     }
     NSLog(@"===YES");
     return YES;
