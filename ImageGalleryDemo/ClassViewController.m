@@ -55,8 +55,8 @@
     webView.autoresizesSubviews = YES;
    [webView stringByEvaluatingJavaScriptFromString:@"var e = document.createEvent('Events'); e.initEvent('orientationchange', true, false); document.dispatchEvent(e);"];
     
-//    _url = @"http://www.realestate.com.au/home-ideas/";
-    _url = @"http://10.18.10.2:8080";
+    _url = @"http://www.realestate.com.au/home-ideas/";
+    //_url = @"http://10.18.10.2:8080";
     [self loadUrl: _url];
     NSHTTPCookie *cookie;
     NSHTTPCookieStorage *cookieJar = [NSHTTPCookieStorage sharedHTTPCookieStorage];
