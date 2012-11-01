@@ -698,8 +698,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "2D593872-6707-45BA-A346-EA5FD5CFB942";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "2D593872-6707-45BA-A346-EA5FD5CFB942";
+				PROVISIONING_PROFILE = "D3C35A89-0652-4073-9221-89BCE6F2977C";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "D3C35A89-0652-4073-9221-89BCE6F2977C";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -722,8 +722,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "2D593872-6707-45BA-A346-EA5FD5CFB942";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "2D593872-6707-45BA-A346-EA5FD5CFB942";
+				PROVISIONING_PROFILE = "D3C35A89-0652-4073-9221-89BCE6F2977C";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "D3C35A89-0652-4073-9221-89BCE6F2977C";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -733,8 +733,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_WARN_OBJCPP_ARC_ABI = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../../Documents/FacebookSDK\"",
@@ -760,8 +760,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_WARN_OBJCPP_ARC_ABI = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../../Documents/FacebookSDK\"",
