@@ -10,7 +10,6 @@
 		49098F01163A247200C6E793 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49098F00163A247200C6E793 /* UIKit.framework */; };
 		49098F03163A247200C6E793 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49098F02163A247200C6E793 /* Foundation.framework */; };
 		49098F05163A247200C6E793 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49098F04163A247200C6E793 /* CoreGraphics.framework */; };
-		49098F0B163A247200C6E793 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 49098F09163A247200C6E793 /* InfoPlist.strings */; };
 		49098F0D163A247200C6E793 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 49098F0C163A247200C6E793 /* main.m */; };
 		49098F11163A247200C6E793 /* ClassAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 49098F10163A247200C6E793 /* ClassAppDelegate.m */; };
 		49098F13163A247200C6E793 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 49098F12163A247200C6E793 /* Default.png */; };
@@ -28,7 +27,6 @@
 		49098F4B163A251A00C6E793 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49098F4A163A251A00C6E793 /* QuartzCore.framework */; };
 		4912972C164249CF007ECF3B /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4912972B164249CF007ECF3B /* FacebookSDK.framework */; };
 		4912972E164249D9007ECF3B /* FacebookSDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4912972D164249D9007ECF3B /* FacebookSDKResources.bundle */; };
-		4912973016424AB9007ECF3B /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4912972F16424AB9007ECF3B /* Info.plist */; };
 		4912973216424AC0007ECF3B /* FBUserSettingsViewResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4912973116424AC0007ECF3B /* FBUserSettingsViewResources.bundle */; };
 		49165318163D6E900015F643 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 49165314163D6E900015F643 /* libTestFlight.a */; };
 		49165319163D6E900015F643 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 49165315163D6E900015F643 /* README.md */; };
@@ -86,7 +84,6 @@
 		49098F02163A247200C6E793 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		49098F04163A247200C6E793 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		49098F08163A247200C6E793 /* ImageGalleryDemo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ImageGalleryDemo-Info.plist"; sourceTree = "<group>"; };
-		49098F0A163A247200C6E793 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		49098F0C163A247200C6E793 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		49098F0E163A247200C6E793 /* ImageGalleryDemo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ImageGalleryDemo-Prefix.pch"; sourceTree = "<group>"; };
 		49098F0F163A247200C6E793 /* ClassAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ClassAppDelegate.h; sourceTree = "<group>"; };
@@ -108,7 +105,6 @@
 		49098F4A163A251A00C6E793 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		4912972B164249CF007ECF3B /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../../Documents/FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
 		4912972D164249D9007ECF3B /* FacebookSDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = FacebookSDKResources.bundle; path = ../../../Documents/FacebookSDK/FacebookSDK.framework/Versions/A/Resources/FacebookSDKResources.bundle; sourceTree = "<group>"; };
-		4912972F16424AB9007ECF3B /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../../../Documents/FacebookSDK/FacebookSDK.framework/Versions/A/Resources/Info.plist; sourceTree = "<group>"; };
 		4912973116424AC0007ECF3B /* FBUserSettingsViewResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = FBUserSettingsViewResources.bundle; path = ../../../Documents/FacebookSDK/FacebookSDK.framework/Versions/A/Resources/FBUserSettingsViewResources.bundle; sourceTree = "<group>"; };
 		49165314163D6E900015F643 /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFlight.a; sourceTree = "<group>"; };
 		49165315163D6E900015F643 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
@@ -228,7 +224,6 @@
 			isa = PBXGroup;
 			children = (
 				4912973116424AC0007ECF3B /* FBUserSettingsViewResources.bundle */,
-				4912972F16424AB9007ECF3B /* Info.plist */,
 				4912972D164249D9007ECF3B /* FacebookSDKResources.bundle */,
 				4912972B164249CF007ECF3B /* FacebookSDK.framework */,
 				4916531B163D87240015F643 /* libz.dylib */,
@@ -272,7 +267,6 @@
 				4916531F163D92850015F643 /* apple-touch-icon-57x57.png */,
 				49431AE8163A29C90053BAF0 /* ClassViewController.xib */,
 				49098F08163A247200C6E793 /* ImageGalleryDemo-Info.plist */,
-				49098F09163A247200C6E793 /* InfoPlist.strings */,
 				49098F0C163A247200C6E793 /* main.m */,
 				49098F0E163A247200C6E793 /* ImageGalleryDemo-Prefix.pch */,
 				49098F12163A247200C6E793 /* Default.png */,
@@ -569,7 +563,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				49098F0B163A247200C6E793 /* InfoPlist.strings in Resources */,
 				49098F13163A247200C6E793 /* Default.png in Resources */,
 				49098F15163A247200C6E793 /* Default@2x.png in Resources */,
 				49098F17163A247200C6E793 /* Default-568h@2x.png in Resources */,
@@ -592,7 +585,6 @@
 				49165324163D92F50015F643 /* apple-touch-icon-114x114.png in Resources */,
 				49165326163D93010015F643 /* apple-touch-icon-114x114.png in Resources */,
 				4912972E164249D9007ECF3B /* FacebookSDKResources.bundle in Resources */,
-				4912973016424AB9007ECF3B /* Info.plist in Resources */,
 				4912973216424AC0007ECF3B /* FBUserSettingsViewResources.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -670,14 +662,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		49098F09163A247200C6E793 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				49098F0A163A247200C6E793 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
 		49098F2D163A247200C6E793 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
